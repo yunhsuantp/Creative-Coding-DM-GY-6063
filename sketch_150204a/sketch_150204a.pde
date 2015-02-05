@@ -12,8 +12,8 @@ halfway between the 'midpoint' of the bottom side and the lower right 'corner'.
 void setup(){
   int width;
   int height;
-  width = 800;
-  height = 500;
+  width = 500;
+  height = 800;
   size(width, height);
   
   noLoop();  //draw() will not loop
@@ -57,9 +57,9 @@ void draw(){
     float degree_3 = (degree_1 + degree_2)/2;
     
     arc(width/2, height/2, 2*r, 2*r, radians(degree_1), radians(degree_2)); //arc(x, y, width, height, angle_start, angle_stop)
-    //point(r + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r);
-    ellipse(r + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r, 8, 8);
-    line(r + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r, width/2, height/2);
+    //point((width/2) + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r);
+    ellipse((width/2) + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r, 8, 8);
+    line((width/2) + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r, width/2, height/2);
   }
   
   if(width < height){
@@ -71,9 +71,9 @@ void draw(){
     float degree_3 = (degree_1 + degree_2)/2;
     
     arc(width/2, height/2, 2*r, 2*r, radians(degree_1), radians(degree_2)); //arc(x, y, width, height, angle_start, angle_stop)
-    //point(r + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r);
-    ellipse(r + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r, 8, 8);
-    line(r + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r, width/2, height/2);
+    //point(r + cos(radians(degree_3))*r, (height/2) + sin(radians(degree_3))*r);
+    ellipse(r + cos(radians(degree_3))*r, (height/2) + sin(radians(degree_3))*r, 8, 8);
+    line(r + cos(radians(degree_3))*r, (height/2) + sin(radians(degree_3))*r, width/2, height/2);
   }
   
   
