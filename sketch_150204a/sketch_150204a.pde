@@ -16,8 +16,10 @@ void setup(){
   height = 500;
   size(width, height);
   
-  //noLoop();  //draw() will not loop
+  noLoop();  //draw() will not loop
 }
+
+
 void draw(){
   background(255);
   
