@@ -14,7 +14,8 @@ void setup(){
   height = 500;
   size(width, height);
   
-  noLoop();  //draw() will not loop
+  //noLoop();  //draw() will not loop
+  frameRate(4);
 }
 void draw(){
 
