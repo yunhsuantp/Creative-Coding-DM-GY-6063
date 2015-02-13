@@ -12,12 +12,12 @@ halfway between the 'midpoint' of the bottom side and the lower right 'corner'.
 void setup(){
   int width;
   int height;
-  width = 300;
-  height = 600;
+  width = 500;
+  height = 500;
   size(width, height);
   
-  //noLoop();  //draw() will not loop
-  frameRate(2);
+  noLoop();  //draw() will not loop
+  //frameRate(2);
 }
 
 
@@ -61,29 +61,38 @@ void draw(){
     ellipse(r + cos(radians(degree_point7))*r, r + sin(radians(degree_point7))*r, 8, 8);
     line(r + cos(radians(degree_point7))*r, r + sin(radians(degree_point7))*r, width/2, height/2);
     */
-    /*
+    
     //find the seventh point
-    float slope = (0-height)/(width-(width/4*3));  //the slope of the "line" from UR to the midP of B&LR
+    //the function of the circle is "r^2=(x-r)^2+(y-r)^2"
+    //find the "range" of the seventh point on the arc
+    //the function of the line is y=mx+b
+    //put y=mx+b into r^2=(x-r)^2+(y-r)^2
+    //r^2 = (x-r)^2+(mx+b-r)^2
+    //......
+    //x=(-m*b+r+m*r+sqrt(2*m*m*r*r+m*m*b*r-m*b*r+m*r*r+2*r*b-b*b))/(1+m*m)   |    x=(-m*b+r+m*r-sqrt(2*m*m*r*r+m*m*b*r-m*b*r+m*r*r+2*r*b-b*b))/(1+m*m)
+    
+    
+    float slope = (0-height)/(width-(width/4*3));  //the slope of the "line" from UR to the midP of B&LR   (m)
     println(slope);
-    float b = -slope * width;//put UR point(width, 0) into y=mx+b, b=y-mx, b=-mx
+    float b = -slope * width;  //put UR point(width, 0) into y=mx+b, b=y-mx, b=-mx
     println(b);
-    //the function of the circle is "r*r=(x-r)(x-r)+(y-r)(y-r)"
-    //the range of the seventh point
-    //put y=slope*x+b into r*r=(x-r)(x-r)+(y-r)(y-r)
-    //r*r = (x-r)*(x-r)+((slope*x+b)-r)*((slope*x+b)-r);
-    //(x-r)*(x-r) = r*r - ((slope*x+b)-r)*((slope*x+b)-r);
-    //(x-r) = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) & -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
-    //x = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) + r & -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) + r;
     
-    //float x_1=0;
-    //float x_2=0;
-    //x_1 = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
-    //x_2 = -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
-      //println(x_1);
-      //println(x_2);
-      //println("test");
+    float x_1=0;
+    float x_2=0;
+    x_1 = (-slope*b+r+slope*r+sqrt(2*slope*slope*r*r+slope*slope*b*r-slope*b*r+slope*r*r+2*r*b-b*b))/(1+slope*slope);
+    x_2 = (-slope*b+r+slope*r-sqrt(2*slope*slope*r*r+slope*slope*b*r-slope*b*r+slope*r*r+2*r*b-b*b))/(1+slope*slope);
+    //x=r+r*cos(thita), cos(thita)=x/r-1, acos(x/r-1)=degree
     
-    */
+    float degree_x_1 = 0;
+    float degree_x_2 = 0;
+    degree_x_1 = acos(x_1/r-1);
+    degree_x_2 = acos(x_2/r-1);
+      println(x_1);
+      println(x_2);
+      println(degree_x_1);
+      println(degree_x_2);
+    
+    
   }
   
   if(width > height){
@@ -102,6 +111,8 @@ void draw(){
     ellipse((width/2) + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r, 8, 8);  //the "Eighth" Point
     line((width/2) + cos(radians(degree_3))*r, r + sin(radians(degree_3))*r, width/2, height/2);
     
+    
+    
     /*
     float degree_point7 = random(-45, 67.5);
     ellipse(r + cos(radians(degree_point7))*r, r + sin(radians(degree_point7))*r, 8, 8);
@@ -109,27 +120,29 @@ void draw(){
     */
     /*
     //find the seventh point
-    float slope = (0-height)/(width-(width/4*3));  //the slope of the "line" from UR to the midP of B&LR
-    println(slope);
-    float b = -slope * width;//put UR point(width, 0) into y=mx+b, b=y-mx, b=-mx
-    println(b);
-    //the function of the circle is "r*r=(x-r)(x-r)+(y-r)(y-r)"
-    //the range of the seventh point
-    //put y=slope*x+b into r*r=(x-r)(x-r)+(y-r)(y-r)
-    //r*r = (x-r)*(x-r)+((slope*x+b)-r)*((slope*x+b)-r);
-    //(x-r)*(x-r) = r*r - ((slope*x+b)-r)*((slope*x+b)-r);
-    //(x-r) = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) & -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
-    //x = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) + r & -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) + r;
+    //the function of the circle is "r^2=(x-r)^2+(y-r)^2"
+    //find the "range" of the seventh point on the arc
+    //the function of the line is y=mx+b
+    //put y=mx+b into r^2=(x-r)^2+(y-r)^2
+    //r^2 = (x-r)^2+(mx+b-r)^2
+    //......
+    //x=(-m*b+r+m*r+sqrt(2*m*m*r*r+m*m*b*r-m*b*r+m*r*r+2*r*b-b*b))/(1+m*m)   |    x=(-m*b+r+m*r-sqrt(2*m*m*r*r+m*m*b*r-m*b*r+m*r*r+2*r*b-b*b))/(1+m*m)
     
-    //float x_1=0;
-    //float x_2=0;
-    //x_1 = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
-    //x_2 = -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
+    
+    float slope = (0-height)/(width-(width/4*3));  //the slope of the "line" from UR to the midP of B&LR   (m)
+    println(slope);
+    float b = -slope * width;  //put UR point(width, 0) into y=mx+b, b=y-mx, b=-mx
+    println(b);
+    
+    float x_1=0;
+    float x_2=0;
+    x_1 = (-slope*b+r+slope*r+sqrt(2*slope*slope*r*r+slope*slope*b*r-slope*b*r+slope*r*r+2*r*b-b*b))/(1+slope*slope);
+    x_2 = (-slope*b+r+slope*r-sqrt(2*slope*slope*r*r+slope*slope*b*r-slope*b*r+slope*r*r+2*r*b-b*b))/(1+slope*slope);
       //println(x_1);
       //println(x_2);
       //println("test");
-    
     */
+    
   }
   
   if(width < height){
@@ -151,26 +164,27 @@ void draw(){
     */
     /*
     //find the seventh point
-    float slope = (0-height)/(width-(width/4*3));  //the slope of the "line" from UR to the midP of B&LR
-    println(slope);
-    float b = -slope * width;//put UR point(width, 0) into y=mx+b, b=y-mx, b=-mx
-    println(b);
-    //the function of the circle is "r*r=(x-r)(x-r)+(y-r)(y-r)"
-    //the range of the seventh point
-    //put y=slope*x+b into r*r=(x-r)(x-r)+(y-r)(y-r)
-    //r*r = (x-r)*(x-r)+((slope*x+b)-r)*((slope*x+b)-r);
-    //(x-r)*(x-r) = r*r - ((slope*x+b)-r)*((slope*x+b)-r);
-    //(x-r) = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) & -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
-    //x = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) + r & -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r)) + r;
+    //the function of the circle is "r^2=(x-r)^2+(y-r)^2"
+    //find the "range" of the seventh point on the arc
+    //the function of the line is y=mx+b
+    //put y=mx+b into r^2=(x-r)^2+(y-r)^2
+    //r^2 = (x-r)^2+(mx+b-r)^2
+    //......
+    //x=(-m*b+r+m*r+sqrt(2*m*m*r*r+m*m*b*r-m*b*r+m*r*r+2*r*b-b*b))/(1+m*m)   |    x=(-m*b+r+m*r-sqrt(2*m*m*r*r+m*m*b*r-m*b*r+m*r*r+2*r*b-b*b))/(1+m*m)
     
-    //float x_1=0;
-    //float x_2=0;
-    //x_1 = sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
-    //x_2 = -sqrt (r*r - ((slope*x+b)-r)*((slope*x+b)-r));
+    
+    float slope = (0-height)/(width-(width/4*3));  //the slope of the "line" from UR to the midP of B&LR   (m)
+    println(slope);
+    float b = -slope * width;  //put UR point(width, 0) into y=mx+b, b=y-mx, b=-mx
+    println(b);
+    
+    float x_1=0;
+    float x_2=0;
+    x_1 = (-slope*b+r+slope*r+sqrt(2*slope*slope*r*r+slope*slope*b*r-slope*b*r+slope*r*r+2*r*b-b*b))/(1+slope*slope);
+    x_2 = (-slope*b+r+slope*r-sqrt(2*slope*slope*r*r+slope*slope*b*r-slope*b*r+slope*r*r+2*r*b-b*b))/(1+slope*slope);
       //println(x_1);
       //println(x_2);
       //println("test");
-      
       */
   }
   
