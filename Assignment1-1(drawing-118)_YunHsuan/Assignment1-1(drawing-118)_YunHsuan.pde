@@ -18,7 +18,7 @@ void setup(){
   frameRate(4);
 }
 void draw(){
-
+  
   background(255);
   float width_Point1 = 0;
   float height_Point1 = 0;
