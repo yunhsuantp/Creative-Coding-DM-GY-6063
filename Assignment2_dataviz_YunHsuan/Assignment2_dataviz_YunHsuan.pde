@@ -82,8 +82,8 @@ void draw(){
   background(50);
   for(int i=0; i<data.length; i++){
     for(int j=0; j<data[i].length; j++){
-      fill(random(255), data[i][j]);
-      ellipse(i*30+50, j*50+50, data[i][j]/300, data[i][j]/300);    //ellipse(x-coordinate, y-coordinate, width, height)
+      fill(random(200), random(200),random(100), data[i][j]);
+      ellipse(j*80+200, i*20+10, data[i][j]/300, data[i][j]/300);    //ellipse(x-coordinate, y-coordinate, width, height)
     }
   }
   
