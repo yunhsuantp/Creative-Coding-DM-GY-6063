@@ -100,7 +100,7 @@ void draw(){
       text(data[i][j], j*80+200, i*20+10);
   }
   */
-  /*
+  
   background(200);
   //visulaize with triangles
   for(int m=1; m<data.length; m++){
@@ -116,8 +116,8 @@ void draw(){
       fill(255);
       text(data[i][j], j*80+200, i*20+10);
   }
-  */
   
+  /*
   background(200);
   //visulaize with lines
   for(int m=1; m<data.length; m++){
@@ -133,6 +133,6 @@ void draw(){
       fill(255);
       text(data[i][j], j*80+200, i*20+10);
   }
-  
+  */
   
 }
