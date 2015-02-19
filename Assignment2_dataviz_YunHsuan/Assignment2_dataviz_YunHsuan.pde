@@ -80,10 +80,16 @@ void draw(){
   // where row is an int row number, and col is an int column number
   
   background(50);
-  for(int i=0; i<data.length; i++){
-    for(int j=0; j<data[i].length; j++){
-      fill(random(200), random(200),random(100), data[i][j]);
-      ellipse(j*80+200, i*20+10, data[i][j]/300, data[i][j]/300);    //ellipse(x-coordinate, y-coordinate, width, height)
+    for(int i=0,j=0; i<data.length; i++){
+      fill(255);
+      text(data[i][j], j*80+200, i*20+10);
+    }
+  
+  
+  for(int m=1; m<data.length; m++){
+    for(int n=1; n<data[n].length; n++){
+      fill(random(200), random(200),random(100), data[m][n]);
+      ellipse(n*80+200, m*20+10, data[m][n]/300, data[m][n]/300);    //ellipse(x-coordinate, y-coordinate, width, height)
     }
   }
   
