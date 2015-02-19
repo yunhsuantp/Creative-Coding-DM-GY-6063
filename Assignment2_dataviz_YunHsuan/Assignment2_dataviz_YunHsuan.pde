@@ -80,6 +80,7 @@ void draw(){
   // to access individual data cells all you have to do is call data[row][col],
   // where row is an int row number, and col is an int column number
   
+  //uncomment each section so see different ways to visualize
   
   /*
   background(0);
