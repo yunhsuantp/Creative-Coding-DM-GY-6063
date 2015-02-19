@@ -55,6 +55,7 @@ void setup(){
       // handle our blank data OR data containing "N/A" by replacing with 0s 
       if(tempCellValue[1].equals("") || tempCellValue[1].equals("N/A")){
         data[i][j] = 0;
+        println(data[i][j]);
       }
       else {
         data[i][j] = Integer.parseInt(tempCellValue[1]);
@@ -79,17 +80,57 @@ void draw(){
   // to access individual data cells all you have to do is call data[row][col],
   // where row is an int row number, and col is an int column number
   
-  background(50);
-    for(int i=0,j=0; i<data.length; i++){
+  
+  /*
+  background(0);
+  //visualize with ellipses
+    
+    for(int m=1; m<data.length; m++){
+    for(int n=1; n<data[n].length; n++){
+      
+      fill(random(200), random(200),random(100), data[m][n]);
+      ellipse(n*80+200, m*20+10, data[m][n]/300, data[m][n]/300);    //ellipse(x-coordinate, y-coordinate, width, height)
+      
+      
+    }
+  }
+  for(int i=0,j=0; i<data.length; i++){
       fill(255);
       text(data[i][j], j*80+200, i*20+10);
-    }
-  
-  
+  }
+  */
+  /*
+  background(200);
+  //visulaize with triangles
   for(int m=1; m<data.length; m++){
     for(int n=1; n<data[n].length; n++){
-      fill(random(200), random(200),random(100), data[m][n]);
+      
+      fill(random(200), random(100),random(100), 50);
+      stroke(random(200), random(100),random(100), 50);
+      triangle(data[m][n]/30, data[m][n]/30, n*80+200, 0, 0, m*20+10);  //triangle(x1, y1, x2, y2, x3, y3)
+      
     }
+  }
+  for(int i=0,j=0; i<data.length; i++){
+      fill(255);
+      text(data[i][j], j*80+200, i*20+10);
+  }
+  */
+  
+  background(200);
+  //visulaize with lines
+  for(int m=1; m<data.length; m++){
+    for(int n=1; n<data[n].length; n++){
+      
+      stroke(random(200), random(100),random(100), 150);
+      strokeWeight(10);
+      line(n*60+180, m*20, n*60+data[m][n]/100+180, m*20);    //line(x1, y1, x2, y2)
+      
+    }
+  }
+  for(int i=0,j=0; i<data.length; i++){
+      fill(255);
+      text(data[i][j], j*80+200, i*20+10);
   }
   
   
