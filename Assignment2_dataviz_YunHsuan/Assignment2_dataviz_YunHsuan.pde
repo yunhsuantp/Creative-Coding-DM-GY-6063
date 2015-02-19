@@ -9,15 +9,18 @@
 String[] headers;
 int[][] data; 
 
+
 void setup(){
   // load csv file into String array
   String [] lines = loadStrings("Cyclist_Count_by_Year_At_Selected_Commuter_Locations.csv");
   
   //split the first line into an array and load it into our global headers array
   headers = split(lines[0], ",");
+  //println(headers);
   
   //create a temporary 2D String array.
   //we'll think of it as a 28 row x 9 column matrix
+  //without line[0]
   String[][] tempData = new String[lines.length-1][headers.length];
   
   //Curious to see how many rows and columns we're loading into our tempData?
@@ -55,12 +58,34 @@ void setup(){
       }
       else {
         data[i][j] = Integer.parseInt(tempCellValue[1]);
+        println(data[i][j]);
       }
     }
   }
+  
+  
+  int width;
+  int height;
+  width = 1000;
+  height = 600;
+  size(width, height);
+  
+  noLoop();  //draw() will not loop
+  frameRate(4);
+  
 }
 void draw(){
   // draw something awesome with the data matrix and headers array
   // to access individual data cells all you have to do is call data[row][col],
   // where row is an int row number, and col is an int column number
+  
+  background(50);
+  for(int i=0; i<data.length; i++){
+    for(int j=0; j<data[i].length; j++){
+      fill(random(255), data[i][j]);
+      ellipse(i*30+50, j*50+50, data[i][j]/300, data[i][j]/300);    //ellipse(x-coordinate, y-coordinate, width, height)
+    }
+  }
+  
+  
 }
