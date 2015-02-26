@@ -9,12 +9,14 @@ class Mover {
   PVector acceleration;
   float mass;
   float value = 5;
+  color c;
 
   Mover(float m, float x , float y) {
     mass = m;
     location = new PVector(x,y);
     velocity = new PVector(0,0);
     acceleration = new PVector(0,0);
+    c = color(random(255), random(255), random(255), 100);
   }
   
   void applyForce(PVector force) {
@@ -29,14 +31,14 @@ class Mover {
   }
 
   void display() {
-    color c = color(random(255), random(255), random(255));
-    stroke(0);
-    strokeWeight(2);
+    stroke(100);
+    strokeWeight(1);
     fill(c);
     ellipse(location.x,location.y,mass*value,mass*value);
-     if (mousePressed == true) {
-   value = value+1;
-  } 
+    //add 1 to the value when mouse press
+    if (mousePressed == true) {
+      value = value+1;
+    } 
       
      
   }
@@ -62,4 +64,9 @@ class Mover {
 
 }
 
+  void keyPressed(){
+    //a new Mover object
+    Mover movers_add = new Mover(random(1, 3), random(width), 0);
+    movers = (Mover[]) append(movers, movers_add);
+  }
 
