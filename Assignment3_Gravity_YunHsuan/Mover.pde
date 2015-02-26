@@ -66,7 +66,7 @@ class Mover {
 
   void keyPressed(){
     //a new Mover object
-    Mover movers_add = new Mover(random(1, 3), random(width), 0);
+    Mover movers_add = new Mover(random(1, 3), random(width), mouseY);
     movers = (Mover[]) append(movers, movers_add);
   }
 

@@ -11,7 +11,7 @@ void setup() {
   for (int i = 0; i < movers.length; i++) {
     //Fill the movers array with new Movers. Each Mover is constructed with a random "mass"
     //a random x between 0&width, and a y-position of 0.
-    movers[i] = new Mover(random(1, 3), random(width), mouseY);
+    movers[i] = new Mover(random(1, 3), random(width), 0);
   }
 }
 
